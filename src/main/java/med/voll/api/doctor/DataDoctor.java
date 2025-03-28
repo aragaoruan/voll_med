@@ -17,6 +17,9 @@ public record DataDoctor(
     String email,
 
     @NotBlank(message = "Phone is required")
+    String phone,
+
+    @NotBlank(message = "Phone is required")
     @Pattern(regexp = "\\d{4,6}", message = "Crm must be between 4 and 6 digits")
     String crm,
 
