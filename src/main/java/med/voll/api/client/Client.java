@@ -27,7 +27,7 @@ public class Client {
 
     @Embedded
     private Address address;
-    
+
     private Boolean isActive;
 
 
@@ -38,5 +38,18 @@ public class Client {
         this.document = data.document();
         this.address = new Address(data.address());
         this.isActive = true;
+    }
+
+    public void update(UpdateClientDTO data) {
+        if (data.name() != null) this.name = data.name();
+        if (data.phone() != null) this.phone = data.phone();
+        if (data.address() != null) this.address.update(data.address());
+    }
+
+    /**
+     * Marks the client as inactive.
+     */
+    public void delete() {
+        isActive = Boolean.FALSE;
     }
 }

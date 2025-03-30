@@ -49,6 +49,6 @@ public class Doctor {
     }
 
     public void delete() {
-        this.isActive = false;
+        this.isActive = Boolean.FALSE;
     }
 }
