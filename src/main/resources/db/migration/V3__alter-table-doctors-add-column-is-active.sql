@@ -1,0 +1,1 @@
+alter table doctors add is_active boolean default true;
