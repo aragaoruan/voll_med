@@ -5,9 +5,9 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import med.voll.api.address.DataAddress;
+import med.voll.api.address.CreateAddressDTO;
 
-public record DataDoctor(
+public record CreateDoctorDTO(
 
     @NotBlank(message = "Name is required")
     String name,
@@ -28,6 +28,6 @@ public record DataDoctor(
 
     @NotNull(message = "Address is required")
     @Valid
-    DataAddress address) {
+    CreateAddressDTO address) {
 
 }

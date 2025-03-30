@@ -19,7 +19,7 @@ public class Address {
     private String complement;
     private String number;
 
-    public Address(DataAddress address) {
+    public Address(CreateAddressDTO address) {
         this.street = address.street();
         this.neighborhood = address.neighborhood();
         this.zipCode = address.zipCode();
@@ -29,7 +29,7 @@ public class Address {
         this.number = address.number();
     }
 
-    public void update(DataAddress address) {
+    public void update(CreateAddressDTO address) {
         if (address == null) return;
 
         this.street = address.street() != null ? address.street() : this.street;

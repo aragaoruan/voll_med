@@ -32,7 +32,7 @@ public class Doctor {
 
     private Boolean isActive;
 
-    public Doctor(DataDoctor data) {
+    public Doctor(CreateDoctorDTO data) {
         this.name = data.name();
         this.email = data.email();
         this.phone = data.phone();
@@ -42,7 +42,7 @@ public class Doctor {
         this.isActive = true;
     }
 
-    public void update(DataUpdateDoctor data) {
+    public void update(UpdateDoctorDTO data) {
         if (data.name() != null) this.name = data.name();
         if (data.phone() != null) this.phone = data.phone();
         if (data.address() != null) this.address.update(data.address());
