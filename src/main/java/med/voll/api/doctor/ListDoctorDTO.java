@@ -1,16 +1,13 @@
-package med.voll.api.address;
+package med.voll.api.doctor;
 
-import med.voll.api.doctor.Doctor;
-import med.voll.api.doctor.Specialty;
-
-public record DataListDoctor(
+public record ListDoctorDTO(
     String name,
     String email,
     String crm,
     Specialty specialty
 ) {
 
-    public DataListDoctor(Doctor doctor) {
+    public ListDoctorDTO(Doctor doctor) {
         this(doctor.getName(), doctor.getEmail(), doctor.getCrm(), doctor.getSpecialty());
     }
 }
