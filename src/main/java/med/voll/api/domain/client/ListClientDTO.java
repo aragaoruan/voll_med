@@ -1,4 +1,4 @@
-package med.voll.api.client;
+package med.voll.api.domain.client;
 
 public record ListClientDTO(
 

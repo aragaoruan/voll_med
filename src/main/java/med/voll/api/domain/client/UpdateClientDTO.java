@@ -1,7 +1,7 @@
-package med.voll.api.client;
+package med.voll.api.domain.client;
 
 import jakarta.validation.constraints.NotNull;
-import med.voll.api.address.CreateAddressDTO;
+import med.voll.api.domain.address.CreateAddressDTO;
 
 public record UpdateClientDTO(
 

@@ -1,34 +1,29 @@
-package med.voll.api.doctor;
+package med.voll.api.domain.client;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import med.voll.api.address.CreateAddressDTO;
+import med.voll.api.domain.address.CreateAddressDTO;
 
-public record CreateDoctorDTO(
-
+public record CreateClientDTO(
     @NotBlank(message = "Name is required")
     String name,
 
-    @NotBlank(message = "Email is required")
-    @Email
+    @NotBlank(message = "Name is required")
+    @Email(message = "Email is required and must be valid")
     String email,
 
     @NotBlank(message = "Phone is required")
     String phone,
 
-    @NotBlank(message = "Phone is required")
-    @Pattern(regexp = "\\d{4,6}", message = "Crm must be between 4 and 6 digits")
-    String crm,
-
-    @NotNull(message = "CRM is required")
-    Specialty specialty,
+    @NotBlank(message = "Document is required")
+    @Pattern(regexp = "\\d{11}", message = "Document must be 11 digits")
+    String document,
 
     @NotNull(message = "Address is required")
     @Valid
     CreateAddressDTO address
 ) {
-
 }
