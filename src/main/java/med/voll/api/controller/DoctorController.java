@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
+
 @RestController
 @RequestMapping("/doctor")
 public class DoctorController {
@@ -26,7 +28,7 @@ public class DoctorController {
 
         repository.save(doctor);
 
-        var uri = uriBuilder.path("/doctor/{id}").buildAndExpand(doctor.getId()).toUri();
+        URI uri = uriBuilder.path("/doctor/{id}").buildAndExpand(doctor.getId()).toUri();
 
         return ResponseEntity.created(uri).body(new DetailDoctorDTO(doctor));
 
@@ -34,7 +36,7 @@ public class DoctorController {
 
     @GetMapping("/{id}")
     public ResponseEntity<DetailDoctorDTO> getDoctor(@PathVariable Long id) {
-        var doctor = repository.getReferenceById(id);
+        Doctor doctor = repository.getReferenceById(id);
         return ResponseEntity.ok(new DetailDoctorDTO(doctor));
     }
 
@@ -48,7 +50,7 @@ public class DoctorController {
     @PutMapping
     @Transactional
     public ResponseEntity updateDoctor(@RequestBody UpdateDoctorDTO data) {
-        var doctor = repository.getReferenceById(data.id());
+        Doctor doctor = repository.getReferenceById(data.id());
         doctor.update(data);
 
         return ResponseEntity.ok(new DetailDoctorDTO(doctor));
@@ -57,7 +59,7 @@ public class DoctorController {
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<ResponseEntity> deleteDoctor(@PathVariable Long id) {
-        var doctor = repository.getReferenceById(id);
+        Doctor doctor = repository.getReferenceById(id);
         doctor.delete();
 
         return ResponseEntity.noContent().build();

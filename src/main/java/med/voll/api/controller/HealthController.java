@@ -11,7 +11,6 @@ public class HealthController {
 
     @GetMapping
     public Health health() {
-        // Aqui você pode incluir verificações mais específicas, como verificar a conexão com o banco de dados
         return Health.up().withDetail("status", "UP").build();
     }
 }
