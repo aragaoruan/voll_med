@@ -7,7 +7,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.nio.file.AccessDeniedException;
 import java.util.List;
 
 @RestControllerAdvice
@@ -24,17 +23,10 @@ public class Exception {
         return ResponseEntity.badRequest().body(errors.stream().map(ErrorValidationDTO::new).toList());
     }
 
-    @ExceptionHandler(AccessDeniedException.class)
-    public ResponseEntity<?> handleError403(AccessDeniedException ex) {
-        return ResponseEntity.status(403).body(new SimpleError("Access Denied"));
-    }
-
     private record ErrorValidationDTO(String field, String message) {
         public ErrorValidationDTO(FieldError error) {
             this(error.getField(), error.getDefaultMessage());
         }
     }
 
-    private record SimpleError(String message) {
-    }
 }

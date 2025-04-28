@@ -31,15 +31,21 @@ public class TokenService {
         }
     }
 
+
     private Instant expiresAt() {
         return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
     }
 
-    public boolean isTokenValid(String token) {
-        return true;
-    }
+    public String getSubject(String token) {
+        try {
+            return JWT.require(Algorithm.HMAC256(this.secret))
+                .withIssuer("API Voll.med")
+                .build()
+                .verify(token)
+                .getSubject();
+        } catch (Exception e) {
+            throw new RuntimeException("Token JWT invalid or expired");
+        }
 
-    public String getUserName(String token) {
-        return token;
     }
 }
