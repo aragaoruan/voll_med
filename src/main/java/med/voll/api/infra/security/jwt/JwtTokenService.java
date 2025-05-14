@@ -1,4 +1,4 @@
-package med.voll.api.infra.security;
+package med.voll.api.infra.security.jwt;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 @Service
-public class TokenService {
+public class JwtTokenService {
 
     @Value("${api.security.token.secret}")
     private String secret;
